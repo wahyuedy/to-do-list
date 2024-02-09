@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div class="container box-border absolute flex flex-col justify-center items-center inset-0 bg-emerald-900">
+
+      <div class="row items-center justify-center bg-emerald-700 p-16 rounded-xl shadow-2xl font-medium text-white">
+        <div class="text-center mb-3">
+          <h1 class="text-4xl mb-1">To-Do List</h1>
+
+          <h2 class="text-lg"><%= new Date().getDate() %> <%= new Date().toLocaleString('default', {month: 'long'}); %> <%= new Date().getFullYear(); %></h2>
+        </div>
+
+        <form action="/" method="post">
+          <div class="input mb-4">
+            <input class="p-1 rounded bg-slate-50 text-black" type="text" id="action" name="action" autocomplete="off" placeholder="New task" required />
+            <button type="submit" class="bg-green-600 p-1 m-1 rounded-md text-white">Submit</button>
+          </div>
+
+          <div class="content">
+            <% add.forEach((post, index) => { %>
+            <ul class="list ">
+              <li class="mb-3 pb-0.5 flex flex-row justify-between border-b-2 border-white-400 text-lg capitalize text-white items-center"><input type="checkbox" id="checkbox" class="h-6 w-6 accent-green-5`00 bg-green-700 text-green-100 cursor-pointer"/> <%= post.action %> <a href="/delete/<%= index %>" class="bg-red-500 p-1.5 rounded-md text-white text-base mb-0.5">Delete</a></li>
+            </ul>
+            <% }); %>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="/public/script.js"></script>
+  </body>
+</html>
